@@ -1,0 +1,14 @@
+html {
+    box-sizing: border-box;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+#squareContainer {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1000px; 
+    max-height: 500px;
+}
