@@ -10,5 +10,5 @@ html {
     display: flex;
     flex-wrap: wrap;
     max-width: 1000px; 
-    max-height: 500px;
+    max-height: 1000px;
 }
