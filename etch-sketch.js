@@ -3,9 +3,12 @@ const squareContainer = document.querySelector("#squareContainer");
 const buttonContainer = document.querySelector(".newGridButton");
 //700 container - 80 left/right padding = 620
 const USABLE_CONTAINER_SPACE = 620;
+//possible hex values for color randomness
+const HEX_CHARACTERS = [0,1,2,3,4,5,6,7,8,9,"A","B","C","D","E","F"];
 //initial grid of 16x16;
 let gridSize = 16;
 let squareSize = 0;
+
 
 function createSquare()
 {
@@ -25,6 +28,7 @@ function createSquare()
     //attach it to the existing container div
     squareContainer.appendChild(square);
 }
+
 
 function deleteGrid()
 {
@@ -46,12 +50,29 @@ function createGrid(gridSize)
             createSquare();
         }
 }
-    
+
+
+function newColor()
+{
+    let hexValue = "#";
+
+    //loop to generate hex string of random color
+    for (let i = 0; i < 6; i++)
+    {
+        //generate position to get a hex digit from array
+        randomPosition = Math.floor(Math.random() * 16);
+        hexValue += HEX_CHARACTERS[randomPosition];
+    }
+
+    return hexValue;
+}
+
 
 function changeColor (event)
 {
-    event.target.style.backgroundColor = "purple";
+    event.target.style.backgroundColor = newColor();
 }
+
 
 //changes square color when mouse is over the square
 squareContainer.addEventListener('mouseover', (event) =>
@@ -61,6 +82,7 @@ squareContainer.addEventListener('mouseover', (event) =>
             changeColor(event);
         }
     });
+
 
 //replace current grid with new grid based off user input
 buttonContainer.addEventListener("click", (event) =>
@@ -78,6 +100,7 @@ buttonContainer.addEventListener("click", (event) =>
     deleteGrid();
     createGrid(gridSize);
 });
+
 
 //initial grid creation
 createGrid(gridSize);
